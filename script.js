@@ -58,7 +58,7 @@ function digitPress(num) {
     console.log(op)
 
     if (a!==null && op===null) {
-        return
+        clearPress()
     }
 
 
