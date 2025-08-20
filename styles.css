@@ -13,11 +13,17 @@ Display
 3 of the rest (clear, backspace, decimal)
 
  */
+
+ * {
+    box-sizing: border-box;
+ }
  
  .container {
     display: flex;
     flex-direction: column;
     background-color: blue;
+    justify-content: center;
+    align-items: center;
  
  }
 
@@ -45,4 +51,7 @@ Display
     flex-grow: 0;
     width: 200px;
     height: 30px;
+    padding: 20px;
+    align-items: center;
+    justify-content: flex-end;
  }
