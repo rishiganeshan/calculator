@@ -14,6 +14,8 @@ function multiply(a, b) {
 }
 
 function operate(a,b,op) {
+    a = +a
+    b = +b
     if (op === "+") {
         return add(a,b)
 
@@ -51,35 +53,33 @@ let b = null
 let op = null
 
 function digitPress(num) {
-    num = +num
-    if (a===null) {
-        a = num
-        display.textContent = a + " "
-    } else if (b===null) {
-        if (op !== null) {
-            b = num
-            display.textContent += b
-        }
-
-    } 
-
+    display.textContent += num
 }
 
 function operatorPress(operator) {
-    console.log(operator)
-    if (op === null && a !== null) {
+
+    if (display.textContent !== "" && op===null) {
+        a = display.textContent
         op = operator
-        display.textContent += op + " "
+        display.textContent += op
 
     }
+
 }
 
 function equalsPress() {
-    if (a != null && b != null && op != null) {
-        display.textContent = operate(a,b,op)
-        a = null
+    if (a === null || op === null) {
+        return
+    }
+
+    if (display.textContent.length > a.length + 1) {
+        b = display.textContent.slice(a.length + 1, display.textContent.length)
+        a = operate(a,b,op)
         b = null
         op = null
+        display.textContent = a
+
+
     }
 
 
@@ -89,7 +89,7 @@ function clearPress() {
     a = null
     b = null
     op = null
-    display.textContent = "ENTER EXPRESSION"
+    display.textContent = ""
 
 }
 
