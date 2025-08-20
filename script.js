@@ -51,9 +51,7 @@ let b = null
 let op = null
 
 function digitPress(num) {
-    console.log(num)
     num = +num
-    console.log(display.textContent)
     if (a===null) {
         a = num
         display.textContent = a + " "
@@ -68,7 +66,8 @@ function digitPress(num) {
 }
 
 function operatorPress(operator) {
-    if (operator === null) {
+    console.log(operator)
+    if (op === null && a !== null) {
         op = operator
         display.textContent += op + " "
 
@@ -78,15 +77,18 @@ function operatorPress(operator) {
 function equalsPress() {
     if (a != null && b != null && op != null) {
         display.textContent = operate(a,b,op)
+        a = null
+        b = null
+        op = null
     }
 
 
 }
 
 function clearPress() {
-    let a = null
-    let b = null
-    let op = null
+    a = null
+    b = null
+    op = null
     display.textContent = "ENTER EXPRESSION"
 
 }
@@ -101,6 +103,12 @@ equalsButton.addEventListener("click", () => equalsPress())
 digitButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
         digitPress(btn.textContent)
+    })
+})
+
+operatorButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        operatorPress(btn.textContent)
     })
 })
 
