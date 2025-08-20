@@ -33,7 +33,15 @@ function operate(a,b,op) {
 }
 
 
+// Groups of buttons
+const container = document.querySelector(".container")
+const display = document.querySelector(".display")
+const digitButtons = document.querySelectorAll(".digit")
+const operatorButtons = document.querySelectorAll(".operator")
 
+// Single buttons
+const equalsButton = document.querySelector(".equals")
+const clearButton = document.querySelector(".clear")
 
 
 
@@ -43,13 +51,20 @@ let b = null
 let op = null
 
 function digitPress(num) {
+    console.log(num)
     num = +num
-    if (isNaN(a)) {
+    console.log(display.textContent)
+    if (a===null) {
         a = num
         display.textContent = a + " "
-    } else if (isNaN(b)) {
-        display.textContent += b
-    }    
+    } else if (b===null) {
+        if (op !== null) {
+            b = num
+            display.textContent += b
+        }
+
+    } 
+
 }
 
 function operatorPress(operator) {
@@ -72,17 +87,22 @@ function clearPress() {
     let a = null
     let b = null
     let op = null
+    display.textContent = "ENTER EXPRESSION"
 
 }
 
 
 
-const container = document.querySelector(".container")
-const display = document.querySelector(".display")
-const digitButtons = document.querySelectorAll(".digit")
-const operatorButtons = document.querySelectorAll(".operator")
-const equalsButton = document.querySelectorAll(".equals")
-const clearButton = document.querySelectorAll(".clear")
+
+
+clearButton.addEventListener("click", () => clearPress())
+equalsButton.addEventListener("click", () => equalsPress())
+
+digitButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        digitPress(btn.textContent)
+    })
+})
 
 
 
