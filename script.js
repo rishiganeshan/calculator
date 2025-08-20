@@ -53,7 +53,18 @@ let b = null
 let op = null
 
 function digitPress(num) {
+    console.log(a)
+    console.log(b)
+    console.log(op)
+
+    if (a!==null && op===null) {
+        return
+    }
+
+
     display.textContent += num
+
+    
 }
 
 function operatorPress(operator) {
@@ -62,6 +73,7 @@ function operatorPress(operator) {
         a = display.textContent
         op = operator
         display.textContent += op
+
 
     }
 
@@ -74,6 +86,12 @@ function equalsPress() {
 
     if (display.textContent.length > a.length + 1) {
         b = display.textContent.slice(a.length + 1, display.textContent.length)
+        if (op === "/" && b === "0") {
+            alert("Can't divide by 0")
+            b = null
+            return
+        }
+        
         a = operate(a,b,op)
         b = null
         op = null
