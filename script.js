@@ -32,16 +32,57 @@ function operate(a,b,op) {
     }
 }
 
-const container = document.querySelector(".container")
 
-for (let i = 0; i<10; i++) {
-    button = document.createElement("button")
-    button.data = i;
-    container.appendChild(button)
+
+
+
+
+
+let a = null
+let b = null
+let op = null
+
+function digitPress(num) {
+    num = +num
+    if (isNaN(a)) {
+        a = num
+        display.textContent = a + " "
+    } else if (isNaN(b)) {
+        display.textContent += b
+    }    
+}
+
+function operatorPress(operator) {
+    if (operator === null) {
+        op = operator
+        display.textContent += op + " "
+
+    }
+}
+
+function equalsPress() {
+    if (a != null && b != null && op != null) {
+        display.textContent = operate(a,b,op)
+    }
+
 
 }
 
-let a
-let b
-let op
+function clearPress() {
+    let a = null
+    let b = null
+    let op = null
+
+}
+
+
+
+const container = document.querySelector(".container")
+const display = document.querySelector(".display")
+const digitButtons = document.querySelectorAll(".digit")
+const operatorButtons = document.querySelectorAll(".operator")
+const equalsButton = document.querySelectorAll(".equals")
+const clearButton = document.querySelectorAll(".clear")
+
+
 
