@@ -69,12 +69,24 @@ function digitPress(num) {
 
 function operatorPress(operator) {
 
-    if (display.textContent !== "" && op===null) {
-        a = display.textContent
-        op = operator
-        display.textContent += op
+    // if (display.textContent !== "" && op===null) {
+    //     a = display.textContent
+    //     op = operator
+    //     display.textContent += op
 
 
+    // }
+    if (display.textContent !== "") {
+        if (op === null) {
+            a = display.textContent
+            op = operator
+            display.textContent += op
+            
+        } else if (isNaN(display.textContent.at(-1))) {
+            op = operator
+            display.textContent = display.textContent.slice(0,a.length) + op
+               
+        }
     }
 
 }
