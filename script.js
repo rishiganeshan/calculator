@@ -53,9 +53,7 @@ let b = null
 let op = null
 
 function digitPress(num) {
-    console.log(a)
-    console.log(b)
-    console.log(op)
+
 
     if (a!==null && op===null) {
         clearPress()

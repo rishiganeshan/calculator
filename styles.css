@@ -1,0 +1,48 @@
+/* 
+Display 
+/ x - +
+7 8 9 clear
+4 5 6 backspace
+1 2 3 decimal
+0 = = =
+
+
+
+5 ops
+10 digits
+3 of the rest (clear, backspace, decimal)
+
+ */
+ 
+ .container {
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+ 
+ }
+
+ .row {
+    display: flex;
+ }
+
+ button {
+    display: flex;
+ }
+
+ .digit,
+ .clear,
+ .backspace,
+ .decimal,
+ .operator {
+    width: 50px;
+    height: 50px;
+
+ }
+
+ .display {
+    display: flex;
+    background-color: rgba(0, 128, 0, 0.689);
+    flex-grow: 0;
+    width: 200px;
+    height: 30px;
+ }
